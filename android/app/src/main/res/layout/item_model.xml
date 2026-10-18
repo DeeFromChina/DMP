@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:layout_marginBottom="8dp">
+
+    <!-- 单选按钮 -->
+    <RadioButton
+        android:id="@+id/radio_model"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp" />
+
+    <!-- 模型名称输入框 -->
+    <EditText
+        android:id="@+id/edit_model_name"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_weight="1"
+        android:hint="模型名称（如 gpt-4）"
+        android:inputType="text"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:background="@drawable/edit_text_cyber"
+        android:textSize="13sp"
+        android:textColor="#F1F5F9"
+        android:textColorHint="#94A3B8" />
+
+    <!-- 删除按钮 -->
+    <ImageButton
+        android:id="@+id/btn_delete_model"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="8dp"
+        android:background="@drawable/btn_delete_background"
+        android:src="@android:drawable/ic_menu_close_clear_cancel"
+        android:contentDescription="删除模型"
+        android:tint="#FF5252" />
+</LinearLayout>

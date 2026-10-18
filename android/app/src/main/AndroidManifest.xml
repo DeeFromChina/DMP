@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.dmp.android">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="DMP"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
+        android:theme="@style/Theme.DMP">
+        
+        <activity
+            android:name=".ui.ChatActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        
+        <activity
+            android:name=".ui.ConfigActivity"
+            android:exported="false"
+            android:label="配置" />
+        
+        <!-- DMP 服务配置 ContentProvider -->
+        <provider
+            android:name=".service.DMPServiceProvider"
+            android:authorities="com.dmp.android.service"
+            android:exported="true" />
+        
+        <!-- DMP AIDL 服务 -->
+        <service
+            android:name=".service.DMPService"
+            android:enabled="true"
+            android:exported="true" />
+    </application>
+
+    <!-- 允许其他应用查询 DMP 服务配置 -->
+    <queries>
+        <provider android:authorities="com.dmp.android.service" />
+    </queries>
+</manifest>
