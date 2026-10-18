@@ -1,0 +1,36 @@
+[project]
+name = "dmp"
+version = "0.1.0"
+description = "Device Model Protocol - 跨平台设备大模型协议服务，支持多种LLM提供者的智能回退机制"
+readme = "README.md"
+requires-python = ">=3.12"
+license = {text = "MIT"}
+authors = [
+    {name = "DMP Team"}
+]
+
+dependencies = [
+    "mcp>=1.0.0",
+    "httpx>=0.27.0",
+    "pydantic>=2.0.0",
+    "pydantic-settings>=2.0.0",
+    "loguru>=0.7.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-asyncio>=0.21.0",
+]
+huawei = ["huaweicloudsdkcore>=3.1.0"]
+local = ["llama-cpp-python>=0.2.0", "mlc-llm>=0.1.0"]
+
+[project.scripts]
+dmp = "main:main"
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.backends._legacy:_Backend"
+
+[tool.setuptools]
+packages = ["dmp"]

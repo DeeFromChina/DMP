@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#f5f5f5">
+
+    <!-- Header -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#667eea"
+        android:padding="12dp"
+        android:elevation="4dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="DMP API Demo"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btnHealth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="健康检查"
+                android:textSize="12sp"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="6dp"
+                android:backgroundTint="#5568d3" />
+
+            <Button
+                android:id="@+id/btnClear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="清空"
+                android:textSize="12sp"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="6dp"
+                android:layout_marginStart="8dp"
+                android:backgroundTint="#5568d3" />
+        </LinearLayout>
+
+        <!-- Config Row -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="服务地址:"
+                android:textColor="#ffffff"
+                android:textSize="12sp" />
+
+            <EditText
+                android:id="@+id/etServerUrl"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/default_server_url"
+                android:textColor="#ffffff"
+                android:textSize="12sp"
+                android:backgroundTint="#ffffff"
+                android:padding="4dp"
+                android:layout_marginHorizontal="8dp" />
+
+            <RadioGroup
+                android:id="@+id/rgMode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/rbNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="普通"
+                    android:textColor="#ffffff"
+                    android:textSize="12sp"
+                    android:checked="true"
+                    android:buttonTint="#ffffff" />
+
+                <RadioButton
+                    android:id="@+id/rbStream"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="流式"
+                    android:textColor="#ffffff"
+                    android:textSize="12sp"
+                    android:buttonTint="#ffffff" />
+            </RadioGroup>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Main Content -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <!-- Chat Messages -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerMessages"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:padding="12dp"
+            android:clipToPadding="false" />
+
+        <!-- Request/Response Panel -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:orientation="vertical"
+            android:background="#ffffff"
+            android:elevation="2dp">
+
+            <!-- Tabs -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="#fafafa">
+
+                <Button
+                    android:id="@+id/tabRequest"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="请求体"
+                    android:textSize="14sp"
+                    android:backgroundTint="#667eea"
+                    style="?android:attr/buttonBarButtonStyle" />
+
+                <Button
+                    android:id="@+id/tabResponse"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="响应体"
+                    android:textSize="14sp"
+                    android:backgroundTint="#e0e0e0"
+                    style="?android:attr/buttonBarButtonStyle" />
+            </LinearLayout>
+
+            <!-- Content -->
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/tvDetail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="12dp"
+                    android:fontFamily="monospace"
+                    android:textSize="11sp"
+                    android:textColor="#333333"
+                    android:text="发送消息后查看请求/响应详情" />
+            </ScrollView>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Input Area -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:background="#ffffff"
+        android:elevation="4dp">
+
+        <EditText
+            android:id="@+id/etMessage"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="输入消息..."
+            android:minHeight="48dp"
+            android:maxLines="4"
+            android:padding="12dp"
+            android:background="@android:drawable/edit_text"
+            android:inputType="textMultiLine" />
+
+        <Button
+            android:id="@+id/btnSend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="发送"
+            android:layout_marginStart="8dp"
+            android:backgroundTint="#667eea" />
+    </LinearLayout>
+</LinearLayout>

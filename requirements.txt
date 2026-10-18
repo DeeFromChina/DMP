@@ -1,0 +1,29 @@
+# DMP (Device Model Protocol) - 跨平台设备大模型服务
+# 依赖配置
+
+# MCP SDK
+mcp>=1.0.0
+
+# HTTP 框架
+fastapi>=0.104.0
+uvicorn>=0.24.0
+pydantic>=2.0.0
+
+# HTTP客户端
+httpx>=0.27.0
+aiohttp>=3.9.0
+
+# 配置管理
+pydantic-settings>=2.0.0
+
+# 日志
+loguru>=0.7.0
+
+# 异步支持
+asyncio-mqtt>=0.7.0
+
+# 厂商SDK (按需安装)
+# 华为
+# huaweicloudsdkcore>=3.1.0
+# 小米
+# xiaomi-ai-sdk>=1.0.0

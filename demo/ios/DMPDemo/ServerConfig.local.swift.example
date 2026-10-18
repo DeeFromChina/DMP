@@ -1,0 +1,14 @@
+# DMP Demo 本地配置文件
+# 复制 ServerConfig.swift 为 ServerConfig.local.swift 并修改为你的实际服务器地址
+# 此文件不应提交到 Git
+
+import Foundation
+
+struct ServerConfigLocal {
+    static let host = "你的服务器IP"
+    static let port = "8080"
+    
+    static var baseUrl: String {
+        "http://\(host):\(port)"
+    }
+}

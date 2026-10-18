@@ -1,0 +1,78 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+}
+
+// 读取 version.properties 并自动递增 build 号
+def versionPropsFile = file('../version.properties')
+def versionProps = new Properties()
+versionProps.load(new FileInputStream(versionPropsFile))
+
+def major = versionProps['major'].toInteger()
+def minor = versionProps['minor'].toInteger()
+def patch = versionProps['patch'].toInteger()
+def build = versionProps['build'].toInteger() + 1
+
+// 写回 version.properties
+versionProps['build'] = build.toString()
+versionProps.store(new FileOutputStream(versionPropsFile), null)
+
+def versionNameStr = "${major}.${minor}.${patch}.${String.format('%03d', build)}"
+def versionCodeNum = major * 1000000 + minor * 10000 + patch * 100 + build
+
+android {
+    namespace 'com.dmp.demo.http'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.dmp.demo.http"
+        minSdk 26
+        targetSdk 34
+        versionCode versionCodeNum
+        versionName versionNameStr
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            applicationVariants.all { variant ->
+                variant.outputs.all { output ->
+                    def newName = "DMPDemo-HTTP-${variant.versionName}.apk"
+                    outputFileName = newName
+                }
+            }
+        }
+        debug {
+            applicationVariants.all { variant ->
+                variant.outputs.all { output ->
+                    def newName = "DMPDemo-HTTP-${variant.versionName}-debug.apk"
+                    outputFileName = newName
+                }
+            }
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies {
+    implementation 'androidx.core:core-ktx:1.12.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.11.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.7.0'
+    implementation 'com.squareup.okhttp3:okhttp:4.12.0'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3'
+}
