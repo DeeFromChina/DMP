@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="#0B1120">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <!-- 标题 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="24dp">
+
+            <ImageButton
+                android:id="@+id/btn_back"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@android:drawable/ic_menu_close_clear_cancel"
+                android:contentDescription="返回"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:tint="#2DD4BF" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="设置"
+                android:textColor="#F1F5F9"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:paddingStart="16dp" />
+        </LinearLayout>
+
+        <!-- 模式选择卡片 -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="#1E293B"
+            android:elevation="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="选择模式"
+                    android:textSize="16sp"
+                    android:textColor="#F1F5F9"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="12dp" />
+
+                <RadioGroup
+                    android:id="@+id/radio_group_mode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RadioButton
+                        android:id="@+id/radio_cloud"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="云端大模型"
+                        android:textSize="15sp"
+                        android:textColor="#F1F5F9"
+                        android:padding="12dp" />
+
+                    <RadioButton
+                        android:id="@+id/radio_local"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="本地大模型"
+                        android:textSize="15sp"
+                        android:textColor="#F1F5F9"
+                        android:padding="12dp" />
+                </RadioGroup>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- 云端大模型配置卡片 -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/layout_cloud_config"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:visibility="gone"
+            android:backgroundTint="#1E293B"
+            android:elevation="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="云端大模型配置"
+                    android:textSize="16sp"
+                    android:textColor="#F1F5F9"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="16dp" />
+
+                <!-- 模型选择 -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="选择模型厂商"
+                    android:textSize="14sp"
+                    android:textColor="#94A3B8"
+                    android:layout_marginBottom="8dp" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="@drawable/spinner_background"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:layout_marginBottom="16dp">
+
+                    <Spinner
+                        android:id="@+id/spinner_cloud_provider"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/transparent"
+                        android:spinnerMode="dropdown" />
+                </FrameLayout>
+
+                <!-- API Key -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="API Key"
+                    android:textSize="14sp"
+                    android:textColor="#94A3B8"
+                    android:layout_marginBottom="8dp" />
+
+                <EditText
+                    android:id="@+id/edit_api_key"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:hint="请输入 API Key"
+                    android:inputType="text"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:background="@drawable/edit_text_cyber"
+                    android:textSize="14sp"
+                    android:textColor="#F1F5F9"
+                    android:textColorHint="#94A3B8"
+                    android:layout_marginBottom="16dp" />
+
+                <!-- Base URL -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Base URL"
+                    android:textSize="14sp"
+                    android:textColor="#94A3B8"
+                    android:layout_marginBottom="8dp" />
+
+                <EditText
+                    android:id="@+id/edit_base_url"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:hint="https://api.openai.com/v1"
+                    android:inputType="textUri"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:background="@drawable/edit_text_cyber"
+                    android:textSize="14sp"
+                    android:textColor="#F1F5F9"
+                    android:textColorHint="#94A3B8"
+                    android:layout_marginBottom="8dp" />
+
+                <TextView
+                    android:id="@+id/text_default_url"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="默认值: "
+                    android:textSize="12sp"
+                    android:textColor="#94A3B8"
+                    android:layout_marginBottom="8dp" />
+
+                <!-- API 类型选择 -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="底层 LLM 接口类型"
+                    android:textSize="14sp"
+                    android:textColor="#94A3B8"
+                    android:layout_marginBottom="8dp" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="@drawable/edit_text_cyber"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:layout_marginBottom="8dp">
+
+                    <Spinner
+                        android:id="@+id/spinner_api_type"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/transparent"
+                        android:spinnerMode="dropdown" />
+                </FrameLayout>
+
+                <TextView
+                    android:id="@+id/text_api_type_hint"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="选择底层 LLM 支持的接口类型"
+                    android:textSize="12sp"
+                    android:textColor="#94A3B8"
+                    android:layout_marginBottom="16dp" />
+
+                <!-- 模型版本管理 -->
+                <TextView
+                    android:id="@+id/text_model_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="模型版本管理"
+                    android:textSize="14sp"
+                    android:textColor="#94A3B8"
+                    android:layout_marginBottom="8dp" />
+
+                <!-- 加载动画 -->
+                <ProgressBar
+                    android:id="@+id/progress_models"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:visibility="gone"
+                    android:layout_marginBottom="12dp" />
+
+                <!-- 自动获取模型按钮 -->
+                <Button
+                    android:id="@+id/btn_fetch_models"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:text="自动获取模型列表"
+                    android:textSize="13sp"
+                    android:textColor="#2DD4BF"
+                    android:backgroundTint="#1E293B"
+                    android:layout_marginBottom="12dp" />
+
+                <!-- 模型列表容器 -->
+                <LinearLayout
+                    android:id="@+id/layout_models_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginBottom="12dp" />
+
+                <!-- 添加模型按钮 -->
+                <Button
+                    android:id="@+id/btn_add_model"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:text="+ 添加模型"
+                    android:textSize="13sp"
+                    android:textColor="#2DD4BF"
+                    android:backgroundTint="#1E293B"
+                    android:layout_marginBottom="12dp" />
+
+                <TextView
+                    android:id="@+id/text_model_hint"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="填写 URL 后自动获取，或点击按钮手动获取"
+                    android:textSize="12sp"
+                    android:textColor="#94A3B8"
+                    android:layout_marginBottom="20dp" />
+
+                <!-- 保存按钮 -->
+                <Button
+                    android:id="@+id/btn_save_cloud"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="保存配置"
+                    android:textSize="15sp"
+                    android:textColor="#0B1120"
+                    android:backgroundTint="#2DD4BF" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- 本地大模型配置卡片 -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/layout_local_config"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:backgroundTint="#1E293B"
+            android:elevation="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="本地大模型配置"
+                    android:textSize="16sp"
+                    android:textColor="#F1F5F9"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="16dp" />
+
+                <!-- 手机厂商 LLM 选择 -->
+                <TextView
+                    android:id="@+id/text_local_provider_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="手机厂商 LLM（自动发现）"
+                    android:textSize="14sp"
+                    android:textColor="#94A3B8"
+                    android:layout_marginBottom="8dp" />
+
+                <Spinner
+                    android:id="@+id/spinner_local_provider"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/spinner_background"
+                    android:spinnerMode="dropdown" />
+
+                <TextView
+                    android:id="@+id/text_local_hint"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="无需配置，自动扫描本地服务"
+                    android:textSize="12sp"
+                    android:textColor="#2DD4BF"
+                    android:layout_marginBottom="20dp" />
+
+                <Button
+                    android:id="@+id/btn_save_local"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="保存配置"
+                    android:textSize="15sp"
+                    android:textColor="#0B1120"
+                    android:backgroundTint="#2DD4BF" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+</ScrollView>

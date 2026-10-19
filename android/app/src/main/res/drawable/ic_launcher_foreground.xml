@@ -1,0 +1,44 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    
+    <!-- 背景圆角矩形 -->
+    <path
+        android:fillColor="#1E293B"
+        android:pathData="M20,0h68c11.05,0 20,8.95 20,20v68c0,11.05 -8.95,20 -20,20h-68c-11.05,0 -20,-8.95 -20,-20v-68c0,-11.05 8.95,-20 20,-20z" />
+    
+    <!-- 青色虚线连接（用多段短线模拟虚线效果） -->
+    <path
+        android:strokeColor="#2DD4BF"
+        android:strokeWidth="3"
+        android:strokeLineCap="round"
+        android:pathData="M54,24 L52,28 M48,34 L46,38 M42,44 L40,48 M36,54 L34,58 M30,64 L29,66" />
+    <path
+        android:strokeColor="#2DD4BF"
+        android:strokeWidth="3"
+        android:strokeLineCap="round"
+        android:pathData="M54,24 L56,28 M60,34 L62,38 M66,44 L68,48 M72,54 L74,58 M78,64 L79,66" />
+    <path
+        android:strokeColor="#2DD4BF"
+        android:strokeWidth="3"
+        android:strokeLineCap="round"
+        android:pathData="M28,66 L34,66 M40,66 L46,66 M52,66 L58,66 M64,66 L70,66 M76,66 L80,66" />
+    
+    <!-- 三个青色节点 -->
+    <path
+        android:fillColor="#2DD4BF"
+        android:pathData="M54,24m-10,0a10,10 0,1 1,20 0a10,10 0,1 1,-20 0" />
+    <path
+        android:fillColor="#2DD4BF"
+        android:pathData="M29,66m-10,0a10,10 0,1 1,20 0a10,10 0,1 1,-20 0" />
+    <path
+        android:fillColor="#2DD4BF"
+        android:pathData="M80,66m-10,0a10,10 0,1 1,20 0a10,10 0,1 1,-20 0" />
+    
+    <!-- 中心白色节点 -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M54,55m-5,0a5,5 0,1 1,10 0a5,5 0,1 1,-10 0" />
+</vector>

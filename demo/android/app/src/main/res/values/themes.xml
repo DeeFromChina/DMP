@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.DMPDemo" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <item name="colorPrimary">#667eea</item>
+        <item name="colorPrimaryVariant">#5568d3</item>
+        <item name="colorOnPrimary">#ffffff</item>
+        <item name="colorSecondary">#764ba2</item>
+        <item name="colorSecondaryVariant">#653a91</item>
+        <item name="colorOnSecondary">#ffffff</item>
+        <item name="android:statusBarColor">#667eea</item>
+    </style>
+</resources>

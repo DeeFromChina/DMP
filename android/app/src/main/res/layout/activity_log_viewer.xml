@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1e1e1e">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <!-- 标题 -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="🔍 DMP 日志查看器"
+            android:textSize="24sp"
+            android:textColor="#4ec9b0"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginBottom="16dp" />
+
+        <!-- 状态提示 -->
+        <TextView
+            android:id="@+id/status_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="正在启动服务器..."
+            android:textSize="16sp"
+            android:textColor="#d4d4d4"
+            android:gravity="center"
+            android:padding="16dp"
+            android:background="#2d2d30"
+            android:layout_marginBottom="24dp" />
+
+        <!-- 二维码 -->
+        <ImageView
+            android:id="@+id/qr_code_image"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_gravity="center"
+            android:background="#ffffff"
+            android:padding="16dp"
+            android:layout_marginBottom="24dp"
+            android:contentDescription="日志查看二维码" />
+
+        <!-- URL显示 -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="服务器地址："
+            android:textSize="14sp"
+            android:textColor="#808080"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/url_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="http://..."
+            android:textSize="16sp"
+            android:textColor="#4ec9b0"
+            android:fontFamily="monospace"
+            android:padding="12dp"
+            android:background="#2d2d30"
+            android:layout_marginBottom="24dp" />
+
+        <!-- 使用说明 -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="使用说明"
+            android:textSize="18sp"
+            android:textColor="#4ec9b0"
+            android:textStyle="bold"
+            android:layout_marginBottom="12dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="1. 确保电脑和手机在同一WiFi网络\n2. 电脑浏览器扫码\n3. 实时查看日志（自动刷新）\n4. 支持过滤：全部/错误/警告/信息\n5. 可导出日志为JSON格式"
+            android:textSize="14sp"
+            android:textColor="#d4d4d4"
+            android:lineSpacingMultiplier="1.5"
+            android:padding="16dp"
+            android:background="#2d2d30" />
+
+        <!-- 安全提示 -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="⚠️ 安全提示"
+            android:textSize="16sp"
+            android:textColor="#dcdcaa"
+            android:textStyle="bold"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="12dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="• 仅Debug模式可用\n• Release模式自动禁用\n• 仅限同WiFi局域网访问\n• 发布正式版时请关闭此功能"
+            android:textSize="14sp"
+            android:textColor="#dcdcaa"
+            android:lineSpacingMultiplier="1.5"
+            android:padding="16dp"
+            android:background="#3e3e42" />
+
+    </LinearLayout>
+</ScrollView>

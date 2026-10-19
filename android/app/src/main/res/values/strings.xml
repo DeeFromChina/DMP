@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">DMP</string>
+    <string name="config_title">配置</string>
+    <string name="chat_title">DMP Chat</string>
+</resources>

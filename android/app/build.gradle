@@ -1,0 +1,117 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'org.jetbrains.kotlin.plugin.serialization'
+}
+
+// 读取 version.properties 并自动递增 build 号
+def versionPropsFile = file('../version.properties')
+def versionProps = new Properties()
+versionProps.load(new FileInputStream(versionPropsFile))
+
+def major = versionProps['major'].toInteger()
+def minor = versionProps['minor'].toInteger()
+def patch = versionProps['patch'].toInteger()
+def build = versionProps['build'].toInteger() + 1
+
+// 保存递增后的 build 号
+versionProps['build'] = build.toString()
+versionProps.store(new FileOutputStream(versionPropsFile), null)
+
+def versionNameStr = "${major}.${minor}.${patch}.${String.format('%03d', build)}"
+def versionCodeNum = major * 1000000 + minor * 10000 + patch * 100 + build
+
+android {
+    namespace 'com.dmp.android'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.dmp.android"
+        minSdk 26
+        targetSdk 34
+        versionCode versionCodeNum
+        versionName versionNameStr
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            applicationVariants.all { variant ->
+                variant.outputs.all { output ->
+                    def newName = "DMP-${variant.versionName}-${variant.buildType.name}.apk"
+                    outputFileName = newName
+                }
+            }
+        }
+        debug {
+            applicationVariants.all { variant ->
+                variant.outputs.all { output ->
+                    def newName = "DMP-${variant.versionName}-debug.apk"
+                    outputFileName = newName
+                }
+            }
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+
+    buildFeatures {
+        viewBinding true
+        buildConfig true
+        aidl true
+    }
+    
+    sourceSets {
+        main {
+            aidl.srcDirs = ['src/main/aidl']
+        }
+    }
+}
+
+dependencies {
+    // AndroidX
+    implementation 'androidx.core:core-ktx:1.12.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.11.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.security:security-crypto:1.1.0-alpha06'
+    
+    // Lifecycle
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.7.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0'
+    
+    // Coroutines
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3'
+    
+    // Serialization
+    implementation 'org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.2'
+    
+    // OkHttp (网络请求)
+    implementation 'com.squareup.okhttp3:okhttp:4.12.0'
+    
+    // TensorFlow Lite (本地模型)
+    implementation 'org.tensorflow:tensorflow-lite:2.16.1'
+    implementation 'org.tensorflow:tensorflow-lite-gpu:2.16.1'
+    
+    // NanoHTTPD (Debug模式日志服务器)
+    debugImplementation 'org.nanohttpd:nanohttpd:2.3.1'
+    releaseImplementation 'org.nanohttpd:nanohttpd:2.3.1'
+    
+    // ZXing (二维码生成)
+    implementation 'com.google.zxing:core:3.5.2'
+    
+    // Testing
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+}
