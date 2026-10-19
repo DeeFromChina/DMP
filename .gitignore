@@ -1,0 +1,41 @@
+# macOS
+.DS_Store
+*.swp
+*~
+
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+env/
+
+# Environment variables
+.env
+
+# Demo local configs
+demo/ios/DMPDemo/ServerConfig.local.swift
+demo/android/app/src/main/assets/config.properties
+
+# Build outputs
+build/
+*.apk
+*.aab
+*.ipa
+
+# Gradle
+.gradle/
+local.properties
+
+# Xcode
+*.xcodeproj/
+*.xcworkspace/
+DerivedData/

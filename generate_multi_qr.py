@@ -75,10 +75,13 @@ def main():
     local_ip = get_local_ip()
     port = 8888
     
-    # 查找最新的APK文件
-    dmp_apk = find_latest_apk("/Users/frieda.li/Desktop/pythonProject/DMP/android/app/build/outputs/apk/debug", "DMP-*-debug.apk")
-    http_apk = find_latest_apk("/Users/frieda.li/Desktop/pythonProject/DMP/demo/demo-http/app/build/outputs/apk/debug", "DMPDemo-HTTP-*-debug.apk")
-    sdk_apk = find_latest_apk("/Users/frieda.li/Desktop/pythonProject/DMP/demo/demo-sdk/app/build/outputs/apk/debug", "DMPDemo-SDK-*-debug.apk")
+    # 获取项目根目录（脚本所在目录）
+    project_root = Path(__file__).parent
+    
+    # 查找最新的APK文件（使用相对路径）
+    dmp_apk = find_latest_apk(project_root / "android/app/build/outputs/apk/debug", "DMP-*-debug.apk")
+    http_apk = find_latest_apk(project_root / "demo/demo-http/app/build/outputs/apk/debug", "DMPDemo-HTTP-*-debug.apk")
+    sdk_apk = find_latest_apk(project_root / "demo/demo-sdk/app/build/outputs/apk/debug", "DMPDemo-SDK-*-debug.apk")
     
     if not dmp_apk or not http_apk or not sdk_apk:
         print(f"{RED}❌ 未找到APK文件{NC}")
@@ -90,9 +93,10 @@ def main():
             print(f"   缺少: DMP Demo SDK")
         return
     
-    # 复制到 /tmp 目录
+    # 复制到临时目录（跨平台兼容）
     import shutil
-    apk_dir_tmp = "/tmp"
+    import tempfile
+    apk_dir_tmp = tempfile.gettempdir()
     dmp_dest = Path(apk_dir_tmp) / dmp_apk.name
     http_dest = Path(apk_dir_tmp) / http_apk.name
     sdk_dest = Path(apk_dir_tmp) / sdk_apk.name

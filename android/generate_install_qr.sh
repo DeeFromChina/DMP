@@ -18,7 +18,9 @@ echo ""
 
 # 步骤1：构建Debug APK
 echo -e "${YELLOW}[1/4] 构建Debug APK...${NC}"
-cd /Users/frieda.li/Desktop/pythonProject/DMP/android
+# 切换到脚本所在目录的项目根目录
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+cd "$SCRIPT_DIR"
 ./gradlew assembleDebug --quiet
 
 APK_PATH=$(ls app/build/outputs/apk/debug/DMP-*-debug.apk 2>/dev/null | head -1)

@@ -348,6 +348,29 @@ DMP 在设备本地运行，HTTP API 仅在本机监听。云端 LLM 调用由�
 - [iOS 文档](./ios/docs/zh/public/INDEX.md)：iOS 平台文档。
 - [开发者指南](./android/README.md)：本地启动和参与开发的指南。
 
+## 构建 APK / IPA
+
+### Android
+
+```bash
+cd android
+
+# 构建 Debug APK
+./gradlew assembleDebug
+
+# 构建 Release APK
+./gradlew assembleRelease
+
+# 安装到已连接设备
+./gradlew installDebug
+```
+
+APK 输出路径：`android/app/build/outputs/apk/debug/app-debug.apk`
+
+### iOS
+
+用 Xcode 打开 `ios/DMP.xcodeproj`，选择目标设备后点击 **Product → Build** 即可构建。
+
 ## 参与贡献
 
 欢迎帮助改进 DMP！你可以[提交 issue](https://github.com/your-org/DMP/issues) 报告错误或建议功能，也可以[提交 pull request](https://github.com/your-org/DMP/pulls) 改进代码或文档。

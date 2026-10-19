@@ -57,7 +57,9 @@ echo ""
 # 步骤3：构建项目
 echo -e "${YELLOW}[3/4] 构建DMP项目...${NC}"
 
-cd /Users/frieda.li/Desktop/pythonProject/DMP/ios
+# 切换到脚本所在目录的项目根目录
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+cd "$SCRIPT_DIR"
 
 # 获取第一个真实设备
 DEVICE_NAME=$(echo "$DEVICES" | head -n 1 | awk -F'(' '{print $1}' | sed 's/ *$//')

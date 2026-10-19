@@ -29,7 +29,7 @@
 在项目根目录执行：
 
 ```bash
-cd /Users/frieda.li/Desktop/pythonProject/DMP/android
+cd /path/to/DMP/android
 
 # 构建Debug版本
 ./gradlew assembleDebug
@@ -93,7 +93,7 @@ adb shell am start -n com.dmp.android/.ui.ChatActivity
 
 1. **安装Debug版本到手机**
    ```bash
-   cd /Users/frieda.li/Desktop/pythonProject/DMP/android
+   cd /path/to/DMP/android
    ./gradlew assembleDebug
    adb install -r -t app/build/outputs/apk/debug/app-debug.apk
    ```
@@ -284,7 +284,7 @@ adb install -r -t app/build/outputs/apk/debug/app-debug.apk
 
 ```bash
 # 一键构建、安装、启动
-cd /Users/frieda.li/Desktop/pythonProject/DMP/android
+cd /path/to/DMP/android
 ./gradlew assembleDebug && \
 adb install -r -t app/build/outputs/apk/debug/app-debug.apk && \
 adb shell am start -n com.dmp.android/.ui.ChatActivity
